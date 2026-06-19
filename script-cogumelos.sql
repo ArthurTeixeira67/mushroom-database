@@ -3,7 +3,7 @@
 -- ---------------------------------- --
 
 -- 1. Criação da tabela de cogumelos. 
-CREATE TABLE public.mushroom (
+CREATE TABLE kdd.mushroom (
     class                    VARCHAR (50),  -- e=edible, p=poisonous      (IMPORTANT)
     formato_chapeu           VARCHAR (50),  -- b,c,x,f,k,s
     textura_chapeu           VARCHAR (50),  -- f,g,y,s
@@ -39,12 +39,16 @@ CREATE TABLE public.mushroom (
 	2.5 Clicar em "ok".
  */
 
--- 3. Verificar se a tabela foi criada e se os dados já estão inseridos.
-SELECT * FROM public.mushroom;
+-- 3. Adiciona uma coluna de id aos registros.
+ ALTER TABLE kdd.mushroom
+ ADD COLUMN id_cogumelo SMALLINT GENERATED ALWAYS AS IDENTITY PRIMARY KEY;
+
+-- 4. Verificar se a tabela foi criada e se os dados já estão inseridos.
+SELECT * FROM kdd.mushroom;
 
 
--- 4. Deleta as colunas que não serão usadas para o trabalho.
-ALTER TABLE public.mushroom
+-- 5. Deleta as colunas que não serão usadas para o trabalho.
+ALTER TABLE kdd.mushroom
 DROP COLUMN formato_chapeu,
 DROP COLUMN textura_chapeu,
 DROP COLUMN cor_chapeu,
@@ -59,279 +63,269 @@ DROP COLUMN tipo_veu,
 DROP COLUMN cor_veu,
 DROP COLUMN quantidade_anel;
 
--- 5. Verificar se as colunas foram excluidas.
-SELECT * FROM public.mushroom LIMIT 1;
+-- 6. Verificar se as colunas foram excluidas.
+SELECT * FROM kdd.mushroom LIMIT 1;
 
--- 6. trocar os nomes nos registros para melhor entendimento
+-- 7. trocar os nomes nos registros para melhor entendimento.
 
 -- Coluna 'class' --
-UPDATE public.mushroom
+UPDATE kdd.mushroom
 SET class = 'comestível'
 WHERE class = 'e';
 
-UPDATE public.mushroom
+UPDATE kdd.mushroom
 SET class = 'venenoso'
 WHERE class = 'p';
 
 -- Coluna 'manchas' --
-UPDATE public.mushroom
+UPDATE kdd.mushroom
 SET manchas = 'sim'
 WHERE manchas = 't';
 
-UPDATE public.mushroom
+UPDATE kdd.mushroom
 SET manchas = 'não'
 WHERE manchas = 'f';
 
-UPDATE public.mushroom
+UPDATE kdd.mushroom
 SET odor = 'amendoa'
 WHERE odor = 'a';
 
-UPDATE public.mushroom
+UPDATE kdd.mushroom
 SET odor = 'anis'
 WHERE odor = 'l';
 
-UPDATE public.mushroom
+UPDATE kdd.mushroom
 SET odor = 'creosoto'
 WHERE odor = 'c';
 
-UPDATE public.mushroom
+UPDATE kdd.mushroom
 SET odor = 'peixe'
 WHERE odor = 'y';
 
-UPDATE public.mushroom
+UPDATE kdd.mushroom
 SET odor = 'podre'
 WHERE odor = 'f';
 
-UPDATE public.mushroom
+UPDATE kdd.mushroom
 SET odor = 'mofo'
 WHERE odor = 'm';
 
-UPDATE public.mushroom
+UPDATE kdd.mushroom
 SET odor = 'nenhum'
 WHERE odor = 'n';
 
-UPDATE public.mushroom
+UPDATE kdd.mushroom
 SET odor = 'pungente'
 WHERE odor = 'p';
 
-UPDATE public.mushroom
+UPDATE kdd.mushroom
 SET odor = 'apimentado'
 WHERE odor = 's';
 
 -- Coluna 'tamanho_lamelas' --
-UPDATE public.mushroom
+UPDATE kdd.mushroom
 SET tamanho_lamelas = 'largo'
 WHERE tamanho_lamelas = 'b';
 
-UPDATE public.mushroom
+UPDATE kdd.mushroom
 SET tamanho_lamelas = 'estreito'
 WHERE tamanho_lamelas = 'n';
 
 -- Coluna 'cor_lamelas' --
-UPDATE public.mushroom
+UPDATE kdd.mushroom
 SET cor_lamelas = 'preto'
 WHERE cor_lamelas = 'k';
 
-UPDATE public.mushroom
+UPDATE kdd.mushroom
 SET cor_lamelas = 'marrom'
 WHERE cor_lamelas = 'n';
 
-UPDATE public.mushroom
+UPDATE kdd.mushroom
 SET cor_lamelas = 'bege'
 WHERE cor_lamelas = 'b';
 
-UPDATE public.mushroom
+UPDATE kdd.mushroom
 SET cor_lamelas = 'chocolate'
 WHERE cor_lamelas = 'h';
 
-UPDATE public.mushroom
+UPDATE kdd.mushroom
 SET cor_lamelas = 'cinza'
 WHERE cor_lamelas = 'g';
 
-UPDATE public.mushroom
+UPDATE kdd.mushroom
 SET cor_lamelas = 'verde'
 WHERE cor_lamelas = 'r';
 
-UPDATE public.mushroom
+UPDATE kdd.mushroom
 SET cor_lamelas = 'laranja'
 WHERE cor_lamelas = 'o';
 
-UPDATE public.mushroom
+UPDATE kdd.mushroom
 SET cor_lamelas = 'rosa'
 WHERE cor_lamelas = 'p';
 
-UPDATE public.mushroom
+UPDATE kdd.mushroom
 SET cor_lamelas = 'roxo'
 WHERE cor_lamelas = 'u';
 
-UPDATE public.mushroom
+UPDATE kdd.mushroom
 SET cor_lamelas = 'vermelho'
 WHERE cor_lamelas = 'e';
 
-UPDATE public.mushroom
+UPDATE kdd.mushroom
 SET cor_lamelas = 'branco'
 WHERE cor_lamelas = 'w';
 
-UPDATE public.mushroom
+UPDATE kdd.mushroom
 SET cor_lamelas = 'amarelo'
 WHERE cor_lamelas = 'y';
 
 -- Coluna 'textura_caule_acima' --
 
-UPDATE public.mushroom
+UPDATE kdd.mushroom
 SET textura_caule_acima = 'fibroso'
 WHERE textura_caule_acima = 'f';
 
 
-UPDATE public.mushroom
+UPDATE kdd.mushroom
 SET textura_caule_acima = 'escamoso'
 WHERE textura_caule_acima = 'y';
 
-UPDATE public.mushroom
+UPDATE kdd.mushroom
 SET textura_caule_acima = 'sedoso'
 WHERE textura_caule_acima = 'k';
 
-UPDATE public.mushroom
+UPDATE kdd.mushroom
 SET textura_caule_acima = 'liso'
 WHERE textura_caule_acima = 's';
 
 -- Coluna 'tipo_anel' --
 
-UPDATE public.mushroom
+UPDATE kdd.mushroom
 SET tipo_anel = 'cobalto'
 WHERE tipo_anel = 'c';
 
-UPDATE public.mushroom
+UPDATE kdd.mushroom
 SET tipo_anel = 'evanescente'
 WHERE tipo_anel = 'e';
 
-UPDATE public.mushroom
+UPDATE kdd.mushroom
 SET tipo_anel = 'alagardo'
 WHERE tipo_anel = 'f';
 
-UPDATE public.mushroom
+UPDATE kdd.mushroom
 SET tipo_anel = 'grande'
 WHERE tipo_anel = 'l';
 
-UPDATE public.mushroom
+UPDATE kdd.mushroom
 SET tipo_anel = 'nenhum'
 WHERE tipo_anel = 'n';
 
-UPDATE public.mushroom
+UPDATE kdd.mushroom
 SET tipo_anel = 'pendente'
 WHERE tipo_anel = 'p';
 
-UPDATE public.mushroom
+UPDATE kdd.mushroom
 SET tipo_anel = 'bainha'
 WHERE tipo_anel = 's';
 
-UPDATE public.mushroom
+UPDATE kdd.mushroom
 SET tipo_anel = 'zona'
 WHERE tipo_anel =  'z';
 
 -- Coluna 'cor_impressao_esporos' --
 
-UPDATE public.mushroom
+UPDATE kdd.mushroom
 SET cor_impressao_esporos = 'preto'
 WHERE cor_impressao_esporos = 'k';
 
-UPDATE public.mushroom
+UPDATE kdd.mushroom
 SET cor_impressao_esporos = 'marrom'
 WHERE cor_impressao_esporos = 'n';
 
-UPDATE public.mushroom
+UPDATE kdd.mushroom
 SET cor_impressao_esporos = 'bege'
 WHERE cor_impressao_esporos = 'b';
 
-UPDATE public.mushroom
+UPDATE kdd.mushroom
 SET cor_impressao_esporos = 'chocolate'
 WHERE cor_impressao_esporos = 'h';
 
-UPDATE public.mushroom
+UPDATE kdd.mushroom
 SET cor_impressao_esporos = 'verde'
 WHERE cor_impressao_esporos = 'r';
 
-UPDATE public.mushroom
+UPDATE kdd.mushroom
 SET cor_impressao_esporos = 'laranja'
 WHERE cor_impressao_esporos = 'o';
 
-UPDATE public.mushroom
+UPDATE kdd.mushroom
 SET cor_impressao_esporos = 'roxo'
 WHERE cor_impressao_esporos = 'u';
 
-UPDATE public.mushroom
+UPDATE kdd.mushroom
 SET cor_impressao_esporos = 'branco'
 WHERE cor_impressao_esporos = 'w';
 
-UPDATE public.mushroom
+UPDATE kdd.mushroom
 SET cor_impressao_esporos = 'amarelo'
 WHERE cor_impressao_esporos = 'y';
 
 -- Coluna 'populacao' --
 
-UPDATE public.mushroom
+UPDATE kdd.mushroom
 SET populacao = 'abundante'
 WHERE populacao = 'a';
 
-UPDATE public.mushroom
+UPDATE kdd.mushroom
 SET populacao = 'agrupado'
 WHERE populacao = 'c';
 
-UPDATE public.mushroom
+UPDATE kdd.mushroom
 SET populacao = 'numeroso'
 WHERE populacao = 'n';
 
-UPDATE public.mushroom
+UPDATE kdd.mushroom
 SET populacao = 'disperso'
 WHERE populacao = 's';
 
-UPDATE public.mushroom
+UPDATE kdd.mushroom
 SET populacao = 'varios'
 WHERE populacao = 'v';
 
-UPDATE public.mushroom
+UPDATE kdd.mushroom
 SET populacao = 'solitario'
 WHERE populacao = 'y';
 
 -- Coluna 'habitat' --
 
-UPDATE public.mushroom
+UPDATE kdd.mushroom
 SET habitat = 'gramado'
 WHERE habitat = 'g';
 
-UPDATE public.mushroom
+UPDATE kdd.mushroom
 SET habitat = 'folhas'
 WHERE habitat = 'l';
 
-UPDATE public.mushroom
+UPDATE kdd.mushroom
 SET habitat = 'prado'
 WHERE habitat = 'm';
 
-UPDATE public.mushroom
+UPDATE kdd.mushroom
 SET habitat = 'caminho'
 WHERE habitat = 'p';
 
-UPDATE public.mushroom
+UPDATE kdd.mushroom
 SET habitat = 'urbano'
 WHERE habitat = 'u';
 
-UPDATE public.mushroom
+UPDATE kdd.mushroom
 SET habitat = 'baldio'
 WHERE habitat = 'w';
 
-UPDATE public.mushroom
+UPDATE kdd.mushroom
 SET habitat = 'floresta'
 WHERE habitat = 'd';
 
-
-
-
-
-
-
-
-
-
-
-
-
+-- 8. Verifica se os dados trocaram de nome.
+SELECT * FROM kdd.mushroom;
