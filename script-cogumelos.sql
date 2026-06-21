@@ -1,32 +1,29 @@
--- ---------------------------------- --
--- SCRIPT PARA KDD: BASE DE COGUMELOS --
--- ---------------------------------- --
 
 -- 1. Criação da tabela de cogumelos. 
 CREATE TABLE kdd.mushroom (
-    class                    VARCHAR (50),  -- e=edible, p=poisonous      (IMPORTANT)
-    formato_chapeu           VARCHAR (50),  -- b,c,x,f,k,s
-    textura_chapeu           VARCHAR (50),  -- f,g,y,s
-    cor_chapeu               VARCHAR (50),  -- n,b,c,g,r,p,u,e,w,y
-    manchas                  VARCHAR (50),  -- t,f                        (IMPORTANT)
-    odor                     VARCHAR (50),  -- a,l,c,y,f,m,n,p,s          (IMPORTANT)
-    ligacao_lamelas          VARCHAR (50),  -- a,d,f,n
-    espacamento_lamelas      VARCHAR (50),  -- c,w,d
-    tamanho_lamelas          VARCHAR (50),  -- b,n                        (IMPORTANT)
-    cor_lamelas              VARCHAR (50),  -- k,n,b,h,g,r,o,p,u,e,w,y    (IMPORTANT)
-    formato_caule            VARCHAR (50),  -- e,t
-    formato_raiz_caule       VARCHAR (50),  -- b,c,u,e,z,r,?
-    textura_caule_acima      VARCHAR (50),  -- f,y,k,s                    (IMPORTANT)
-    textura_caule_abaixo     VARCHAR (50),  -- f,y,k,s
-    cor_caule_acima          VARCHAR (50),  -- n,b,c,g,o,p,e,w,y
-    cor_caule_abaixo         VARCHAR (50),  -- n,b,c,g,o,p,e,w,y
-    tipo_veu                 VARCHAR (50),  -- p,u
-    cor_veu                  VARCHAR (50),  -- n,o,w,y
-    quantidade_anel          VARCHAR (50),  -- n,o,t
-    tipo_anel                VARCHAR (50),  -- c,e,f,l,n,p,s,z            (IMPORTANT)
-    cor_impressao_esporos    VARCHAR (50),  -- k,n,b,h,r,o,u,w,y          (IMPORTANT)
-    populacao                VARCHAR (50),  -- a,c,n,s,v,y                (IMPORTANT)
-    habitat                  VARCHAR (50)   -- g,l,m,p,u,w,d              (IMPORTANT)
+    class                    VARCHAR (50),  -- (IMPORTANT)
+    formato_chapeu           VARCHAR (50),  
+    textura_chapeu           VARCHAR (50),  
+    cor_chapeu               VARCHAR (50),  
+    manchas                  VARCHAR (50),  -- (IMPORTANT)
+    odor                     VARCHAR (50),  -- (IMPORTANT)
+    ligacao_lamelas          VARCHAR (50),  
+    espacamento_lamelas      VARCHAR (50), 
+    tamanho_lamelas          VARCHAR (50),  -- (IMPORTANT)
+    cor_lamelas              VARCHAR (50),  -- (IMPORTANT)
+    formato_caule            VARCHAR (50),  
+    formato_raiz_caule       VARCHAR (50), 
+    textura_caule_acima      VARCHAR (50),  -- (IMPORTANT)
+    textura_caule_abaixo     VARCHAR (50),  
+    cor_caule_acima          VARCHAR (50), 
+    cor_caule_abaixo         VARCHAR (50),  
+    tipo_veu                 VARCHAR (50),  
+    cor_veu                  VARCHAR (50),  
+    quantidade_anel          VARCHAR (50), 
+    tipo_anel                VARCHAR (50),  -- (IMPORTANT)
+    cor_impressao_esporos    VARCHAR (50),  -- (IMPORTANT)
+    populacao                VARCHAR (50),  -- (IMPORTANT)
+    habitat                  VARCHAR (50)   -- (IMPORTANT)
 );
 
  /*
@@ -39,15 +36,11 @@ CREATE TABLE kdd.mushroom (
 	2.5 Clicar em "ok".
  */
 
--- 3. Adiciona uma coluna de id aos registros.
+-- 3. Adicionar uma coluna de id para os registros
  ALTER TABLE kdd.mushroom
  ADD COLUMN id_cogumelo SMALLINT GENERATED ALWAYS AS IDENTITY PRIMARY KEY;
 
--- 4. Verificar se a tabela foi criada e se os dados já estão inseridos.
-SELECT * FROM kdd.mushroom;
-
-
--- 5. Deleta as colunas que não serão usadas para o trabalho.
+-- 4. Deleta as colunas que não serão usadas para o trabalho.
 ALTER TABLE kdd.mushroom
 DROP COLUMN formato_chapeu,
 DROP COLUMN textura_chapeu,
@@ -63,11 +56,7 @@ DROP COLUMN tipo_veu,
 DROP COLUMN cor_veu,
 DROP COLUMN quantidade_anel;
 
--- 6. Verificar se as colunas foram excluidas.
-SELECT * FROM kdd.mushroom LIMIT 1;
-
--- 7. trocar os nomes nos registros para melhor entendimento.
-
+-- 5. trocar os nomes nos registros para melhor entendimento.
 -- Coluna 'class' --
 UPDATE kdd.mushroom
 SET class = 'comestível'
@@ -327,5 +316,6 @@ UPDATE kdd.mushroom
 SET habitat = 'floresta'
 WHERE habitat = 'd';
 
--- 8. Verifica se os dados trocaram de nome.
-SELECT * FROM kdd.mushroom;
+--6. Verificar se todo o pré-processamento foi feito
+SELECT * FROM kdd.mushroom
+ORDER BY id_cogumelo;
