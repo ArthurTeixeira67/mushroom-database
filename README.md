@@ -74,7 +74,7 @@ Colunas mantidas após a limpeza (com os valores já traduzidos):
 
 | Coluna | Descrição | Valores possíveis |
 |---|---|---|
-| `class` | Classificação do cogumelo | `comestível`, `venenoso` |
+| `classe_cogumelo` | Classificação do cogumelo | `comestível`, `venenoso` |
 | `manchas` | Presença de manchas | `sim`, `não` |
 | `odor` | Cheiro do cogumelo | `amêndoa`, `anis`, `creosoto`, `peixe`, `podre`, `mofo`, `nenhum`, `pungente`, `apimentado` |
 | `tamanho_lamelas` | Tamanho das lamelas | `largo`, `estreito` |
