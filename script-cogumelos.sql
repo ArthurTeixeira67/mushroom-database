@@ -60,7 +60,7 @@
  -- Coluna 'classe_cogumelo' --
  UPDATE kdd.mushroom
  SET classe_cogumelo = 'comestível'
- WHERE class_cogumelo = 'e';
+ WHERE classe_cogumelo = 'e';
 
  UPDATE kdd.mushroom
  SET classe_cogumelo = 'venenoso'
